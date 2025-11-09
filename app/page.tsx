@@ -73,45 +73,81 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="max-w-5xl w-full"
+          className="max-w-5xl w-full flex items-center gap-12 flex-col md:flex-row"
         >
-          <AnimatedText delay={0.2}>
-            <p className="text-[#64ffda] text-sm font-mono mb-4">
-              Hi, my name is
-            </p>
-          </AnimatedText>
-          <AnimatedText delay={0.3}>
-            <h1 className="text-6xl md:text-7xl font-bold text-[#ccd6f6] mb-4">
-              Software Developer
-            </h1>
-          </AnimatedText>
-          <AnimatedText delay={0.4}>
-            <h2 className="text-5xl md:text-6xl font-bold text-[#8892b0] mb-6">
-              I build things for the web.
-            </h2>
-          </AnimatedText>
-          <AnimatedText delay={0.5}>
-            <p className="text-lg text-[#8892b0] max-w-2xl mb-8">
-              I'm a software developer specializing in building (and
-              occasionally designing) exceptional digital experiences.
-              Currently, I'm focused on building accessible, human-centered
-              products.
-            </p>
-          </AnimatedText>
-          <motion.a
-            href="#projects"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 20px rgba(100, 255, 218, 0.3)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block border border-[#64ffda] text-[#64ffda] px-6 py-3 rounded hover:bg-[#64ffda]/10 transition-colors"
+          {/* Photo on the left */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex-shrink-0"
           >
-            Check out my projects!
-          </motion.a>
+            <motion.div
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              className="relative"
+            >
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-[#64ffda] p-1">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[#112240]">
+                  <img
+                    src="/profile.jpg"
+                    alt="Profile Photo"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to a placeholder if image doesn't exist
+                      e.currentTarget.src =
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23112240' width='200' height='200'/%3E%3Ctext fill='%2364ffda' font-family='Arial' font-size='60' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3ESK%3C/text%3E%3C/svg%3E";
+                    }}
+                  />
+                </div>
+              </div>
+              <motion.div
+                className="absolute -bottom-2 -right-2 w-6 h-6 bg-[#64ffda] rounded-full"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* Text content on the right */}
+          <div className="flex-1">
+            <AnimatedText delay={0.3}>
+              <p className="text-[#64ffda] text-sm font-mono mb-4">
+                Hi, my name is
+              </p>
+            </AnimatedText>
+            <AnimatedText delay={0.4}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#ccd6f6] mb-4">
+                Sarah Khaled Aldhafeeri
+              </h1>
+            </AnimatedText>
+            <AnimatedText delay={0.5}>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#8892b0] mb-6">
+                Application Systems Analyst
+              </h2>
+            </AnimatedText>
+            <AnimatedText delay={0.6}>
+              <p className="text-lg text-[#8892b0] max-w-2xl mb-8">
+                I'm a software developer specializing in building (and
+                occasionally designing) exceptional digital experiences.
+                Currently, I'm focused on building accessible, human-centered
+                products.
+              </p>
+            </AnimatedText>
+            <motion.a
+              href="#projects"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 20px rgba(100, 255, 218, 0.3)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block border border-[#64ffda] text-[#64ffda] px-6 py-3 rounded hover:bg-[#64ffda]/10 transition-colors"
+            >
+              Check out my projects!
+            </motion.a>
+          </div>
         </motion.div>
       </section>
 
