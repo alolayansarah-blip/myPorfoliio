@@ -89,7 +89,7 @@ export default function Home() {
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-[#64ffda] p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-[#112240]">
                   <img
-                    src="/profile.jpg"
+                    src="/SARA.png"
                     alt="Profile Photo"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -127,10 +127,10 @@ export default function Home() {
             </AnimatedText>
             <AnimatedText delay={0.6}>
               <p className="text-lg text-[#8892b0] max-w-2xl mb-8">
-                I'm a software developer specializing in building (and
-                occasionally designing) exceptional digital experiences.
-                Currently, I'm focused on building accessible, human-centered
-                products.
+                Application Systems Analyst with experience in building and
+                developing websites working on both front-end and back-end, and
+                improving UI/UX to deliver efficient and user-friendly digital
+                solutions.
               </p>
             </AnimatedText>
             <motion.a
@@ -173,10 +173,10 @@ export default function Home() {
                 className="flex-1"
               >
                 <p className="text-[#8892b0] mb-4">
-                  Hello! I'm a software developer based in the US, specializing
-                  in building (and occasionally designing) exceptional digital
-                  experiences. Currently, I'm focused on building accessible,
-                  human-centered products.
+                  Application Systems Analyst with experience in building and
+                  developing websites, working on both front-end and back-end,
+                  and improving UI/UX to deliver efficient and user-friendly
+                  digital solutions
                 </p>
                 <p className="text-[#8892b0] mb-4">
                   I enjoy creating things that live on the internet, whether
@@ -317,10 +317,13 @@ export default function Home() {
             <div className="space-y-12">
               {[
                 {
-                  title: "Project Name",
+                  title: "Disney Bank",
                   description:
-                    "A web app for visualizing personalized data. View your top items, recently played tracks, and detailed information about each item.",
-                  tech: ["React", "Node.js", "Express"],
+                    "A bank application designed specifically for kids, providing a fun and educational way to learn about money management and banking.",
+                  tech: ["React", "Next.js", "TypeScript"],
+                  images: ["/bank1.png", "/bank2.png"],
+                  externalLink: "#",
+                  githubLink: "#",
                 },
                 {
                   title: "Another Project",
@@ -338,6 +341,54 @@ export default function Home() {
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="bg-[#112240] rounded-lg p-6 hover:shadow-[0_10px_30px_rgba(100,255,218,0.1)] transition-all cursor-pointer"
                 >
+                  {/* Project Images */}
+                  {project.images && project.images.length > 0 && (
+                    <div className="mb-6 flex gap-4 justify-center items-center flex-wrap">
+                      {project.images.map((img, imgIndex) => (
+                        <motion.div
+                          key={imgIndex}
+                          initial={{ opacity: 0, y: 20, rotate: -2 }}
+                          whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: imgIndex * 0.15,
+                            type: "spring",
+                            stiffness: 100,
+                          }}
+                          whileHover={{
+                            scale: 1.08,
+                            rotate: imgIndex % 2 === 0 ? 2 : -2,
+                            y: -8,
+                            boxShadow: "0 20px 40px rgba(100, 255, 218, 0.3)",
+                          }}
+                          className="relative group"
+                        >
+                          {/* Glow effect */}
+                          <div className="absolute -inset-1 bg-gradient-to-r from-[#64ffda] via-[#233554] to-[#64ffda] rounded-xl blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+
+                          {/* Image container */}
+                          <div className="relative bg-[#0a192f] p-2 rounded-xl border-2 border-[#233554] group-hover:border-[#64ffda] transition-colors duration-300">
+                            <motion.img
+                              src={img}
+                              alt={`${project.title} screenshot ${
+                                imgIndex + 1
+                              }`}
+                              className="w-48 md:w-56 lg:w-64 h-auto rounded-lg shadow-2xl"
+                              style={{
+                                filter:
+                                  "drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))",
+                              }}
+                            />
+
+                            {/* Decorative corner accent */}
+                            <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#64ffda] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-[#64ffda] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+
                   <h3 className="text-xl font-semibold text-[#ccd6f6] mb-2">
                     {project.title}
                   </h3>
@@ -362,14 +413,14 @@ export default function Home() {
                   </motion.div>
                   <div className="flex gap-4">
                     <motion.a
-                      href="#"
+                      href={project.externalLink || "#"}
                       whileHover={{ x: 5, color: "#ccd6f6" }}
                       className="text-[#64ffda] hover:text-[#ccd6f6] text-sm"
                     >
                       ↗ External Link
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href={project.githubLink || "#"}
                       whileHover={{ x: 5, color: "#ccd6f6" }}
                       className="text-[#64ffda] hover:text-[#ccd6f6] text-sm"
                     >
