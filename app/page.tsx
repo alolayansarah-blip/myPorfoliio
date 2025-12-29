@@ -51,7 +51,7 @@ export default function Home() {
               animate="visible"
               className="flex gap-8"
             >
-              {["About", "Experience", "Projects"].map((item, index) => (
+              {["Skills", "Experience", "Projects"].map((item, index) => (
                 <motion.a
                   key={item}
                   variants={itemVariants}
@@ -127,10 +127,11 @@ export default function Home() {
             </AnimatedText>
             <AnimatedText delay={0.6}>
               <p className="text-lg text-[#8892b0] max-w-2xl mb-8">
-                Application Systems Analyst with experience in building and
-                developing websites working on both front-end and back-end, and
-                improving UI/UX to deliver efficient and user-friendly digital
-                solutions.
+                I’m an Application Systems Analyst who loves blending technology
+                with design. I enjoy building web and mobile applications using
+                React and React Native, and I care deeply about creating
+                interfaces that are not only functional, but also clean,
+                intuitive, and visually pleasing.
               </p>
             </AnimatedText>
             <motion.a
@@ -151,8 +152,11 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center px-6 py-20">
+      {/* Skills Section */}
+      <section
+        id="skills"
+        className="min-h-screen flex items-center px-6 pt-20 pb-0"
+      >
         <AnimatedSection>
           <div className="max-w-5xl mx-auto">
             <div className="flex items-start gap-12">
@@ -163,7 +167,7 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="text-2xl font-semibold text-[#ccd6f6] whitespace-nowrap"
               >
-                <span className="text-[#64ffda]">01.</span> About Me
+                <span className="text-[#64ffda]">01.</span> Skills
               </motion.h2>
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -172,47 +176,41 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="flex-1"
               >
-                <p className="text-[#8892b0] mb-4">
-                  Application Systems Analyst with experience in building and
-                  developing websites, working on both front-end and back-end,
-                  and improving UI/UX to deliver efficient and user-friendly
-                  digital solutions
-                </p>
-                <p className="text-[#8892b0] mb-4">
-                  I enjoy creating things that live on the internet, whether
-                  that be websites, applications, or anything in between. My
-                  goal is to always build products that provide pixel-perfect,
-                  performant experiences.
-                </p>
-                <p className="text-[#8892b0] mb-6">
+                <p className="text-[#8892b0] mb-8 leading-relaxed">
                   Here are a few technologies I've been working with recently:
                 </p>
-                <motion.ul
-                  variants={containerVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="grid grid-cols-2 gap-2 text-[#8892b0] list-none"
-                >
+
+                {/* Skills Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
-                    "JavaScript (ES6+)",
-                    "TypeScript",
-                    "React",
-                    "Next.js",
-                    "Node.js",
-                    "Python",
-                  ].map((tech, index) => (
-                    <motion.li
-                      key={tech}
-                      variants={itemVariants}
-                      whileHover={{ x: 5, color: "#64ffda" }}
-                      className="flex items-center cursor-default"
+                    "React / React Native",
+                    "JavaScript / TypeScript",
+                    "Responsive UI & UX",
+                    "APIs & Databases",
+                    "Git",
+                  ].map((skill, index) => (
+                    <motion.div
+                      key={skill}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ x: 5, scale: 1.02 }}
+                      className="group relative"
                     >
-                      <span className="text-[#64ffda] mr-2">▹</span>
-                      {tech}
-                    </motion.li>
+                      <div className="bg-[#112240] rounded-lg p-4 border border-[#233554] hover:border-[#64ffda] transition-all duration-300 cursor-default">
+                        <div className="flex items-center">
+                          <span className="text-[#64ffda] mr-3 text-lg group-hover:scale-110 transition-transform">
+                            ▹
+                          </span>
+                          <span className="text-[#8892b0] group-hover:text-[#64ffda] transition-colors">
+                            {skill}
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
                   ))}
-                </motion.ul>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -222,77 +220,80 @@ export default function Home() {
       {/* Experience Section */}
       <section
         id="experience"
-        className="min-h-screen flex items-center px-6 py-20"
+        className="min-h-screen flex items-center px-6 pt-0 pb-20"
       >
         <AnimatedSection>
           <div className="max-w-5xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-2xl font-semibold text-[#ccd6f6] mb-12"
-            >
-              <span className="text-[#64ffda]">02.</span> Where I've Worked
-            </motion.h2>
-            <div className="space-y-8">
-              {[
-                {
-                  period: "2024 — Present",
-                  title: "Senior Software Engineer · Company Name",
-                  description:
-                    "Build and maintain critical components used to construct the frontend, across the whole product. Work closely with cross-functional teams to implement and advocate for best practices.",
-                  tech: ["JavaScript", "TypeScript", "React", "Next.js"],
-                },
-                {
-                  period: "2020 — 2024",
-                  title: "Software Engineer · Previous Company",
-                  description:
-                    "Built, styled, and shipped high-quality websites and digital experiences for a diverse array of projects. Provided leadership within engineering department through close collaboration and knowledge sharing.",
-                  tech: ["React", "Node.js", "TypeScript", "Python"],
-                },
-              ].map((exp, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  whileHover={{ x: 10 }}
-                  className="border-l-2 border-[#233554] pl-6 hover:border-[#64ffda] transition-colors"
-                >
-                  <div className="flex items-baseline gap-4 mb-2">
-                    <motion.span
-                      whileHover={{ scale: 1.1 }}
-                      className="text-sm text-[#64ffda] font-mono"
-                    >
-                      {exp.period}
-                    </motion.span>
-                    <h3 className="text-xl font-semibold text-[#ccd6f6]">
-                      {exp.title}
-                    </h3>
-                  </div>
-                  <p className="text-[#8892b0] mb-4">{exp.description}</p>
+            <div className="flex items-start gap-12">
+              <motion.h2
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-2xl font-semibold text-[#ccd6f6] whitespace-nowrap"
+              >
+                <span className="text-[#64ffda]">02.</span> Where I've Worked
+              </motion.h2>
+              <div className="flex-1 space-y-12">
+                {[
+                  {
+                    period: "2021 — Present",
+                    title: "Applied Systems Analyst ",
+                    company: "Kuwait University",
+                    description: undefined as string | undefined,
+                    tech: undefined as string[] | undefined,
+                  },
+                  {
+                    period: "2011 — 2021",
+                    title: "Programmer / Assistant Computer Engineer",
+                    company: "Ministry of Education",
+                    description: undefined as string | undefined,
+                    tech: undefined as string[] | undefined,
+                  },
+                ].map((exp, index) => (
                   <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex flex-wrap gap-2"
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="group relative"
                   >
-                    {exp.tech.map((tech) => (
-                      <motion.span
-                        key={tech}
-                        variants={itemVariants}
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="text-xs text-[#8892b0] bg-[#112240] px-3 py-1 rounded cursor-default"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
+                    <div className="bg-[#112240] rounded-lg p-6 border border-[#233554] hover:border-[#64ffda]/50 transition-all duration-300">
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                        <div>
+                          <span className="text-sm text-[#64ffda] font-mono block mb-2">
+                            {exp.period}
+                          </span>
+                          <h3 className="text-xl font-semibold text-[#ccd6f6] mb-1 group-hover:text-[#64ffda] transition-colors">
+                            {exp.title}
+                          </h3>
+                          <p className="text-[#64ffda] text-sm font-mono">
+                            {exp.company}
+                          </p>
+                        </div>
+                      </div>
+                      {exp.description && (
+                        <p className="text-[#8892b0] mb-4 leading-relaxed">
+                          {exp.description}
+                        </p>
+                      )}
+                      {exp.tech && exp.tech.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {exp.tech.map((tech: string) => (
+                            <span
+                              key={tech}
+                              className="text-xs text-[#8892b0] font-mono bg-[#0a192f] px-2 py-1 rounded border border-[#233554]"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </motion.div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </AnimatedSection>
@@ -305,16 +306,19 @@ export default function Home() {
       >
         <AnimatedSection>
           <div className="max-w-5xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-2xl font-semibold text-[#ccd6f6] mb-12"
-            >
-              <span className="text-[#64ffda]">03.</span> Some Things I've Built
-            </motion.h2>
-            <div className="space-y-12">
+            <div className="flex items-start gap-12 mb-16">
+              <motion.h2
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-2xl font-semibold text-[#ccd6f6] whitespace-nowrap"
+              >
+                <span className="text-[#64ffda]">03.</span> Some Things I've
+                Built
+              </motion.h2>
+            </div>
+            <div className="space-y-16">
               {[
                 {
                   title: "Disney Bank",
@@ -326,106 +330,96 @@ export default function Home() {
                   githubLink: "#",
                 },
                 {
-                  title: "Another Project",
+                  title: "DishDash",
                   description:
-                    "A full-stack application with user authentication, real-time updates, and team collaboration features.",
-                  tech: ["Next.js", "TypeScript", "PostgreSQL"],
+                    "A foodies app for adding and sharing recipes for foods. Discover new recipes, save your favorites, and share your culinary creations with the community.",
+                  tech: ["React", "Next.js", "TypeScript"],
+                  images: ["/dishdash1.jpg", "/dishdash2.jpg"],
+                  externalLink: "#",
+                  githubLink: "#",
+                },
+                {
+                  title: "Simi",
+                  description:
+                    "A graduation mobile app featuring an AI butler secretary that organizes your tasks based on your mood. Smart task management that adapts to how you're feeling.",
+                  tech: ["React Native", "AI/ML", "TypeScript"],
+                  images: ["/simi1.jpg", "/simi2.jpg"],
+                  externalLink: "#",
+                  githubLink: "#",
                 },
               ].map((project, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="bg-[#112240] rounded-lg p-6 hover:shadow-[0_10px_30px_rgba(100,255,218,0.1)] transition-all cursor-pointer"
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
                 >
-                  {/* Project Images */}
-                  {project.images && project.images.length > 0 && (
-                    <div className="mb-6 flex gap-4 justify-center items-center flex-wrap">
-                      {project.images.map((img, imgIndex) => (
-                        <motion.div
-                          key={imgIndex}
-                          initial={{ opacity: 0, y: 20, rotate: -2 }}
-                          whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            delay: imgIndex * 0.15,
-                            type: "spring",
-                            stiffness: 100,
-                          }}
-                          whileHover={{
-                            scale: 1.08,
-                            rotate: imgIndex % 2 === 0 ? 2 : -2,
-                            y: -8,
-                            boxShadow: "0 20px 40px rgba(100, 255, 218, 0.3)",
-                          }}
-                          className="relative group"
-                        >
-                          {/* Glow effect */}
-                          <div className="absolute -inset-1 bg-gradient-to-r from-[#64ffda] via-[#233554] to-[#64ffda] rounded-xl blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-
-                          {/* Image container */}
-                          <div className="relative bg-[#0a192f] p-2 rounded-xl border-2 border-[#233554] group-hover:border-[#64ffda] transition-colors duration-300">
-                            <motion.img
+                  <div className="flex flex-col lg:flex-row gap-8 items-start">
+                    {/* Project Images */}
+                    {project.images && project.images.length > 0 && (
+                      <div className="flex-shrink-0 flex gap-3">
+                        {project.images.map((img, imgIndex) => (
+                          <motion.div
+                            key={imgIndex}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 + imgIndex * 0.1 }}
+                            className="relative overflow-hidden rounded-lg border border-[#233554] group-hover:border-[#64ffda]/50 transition-colors duration-300"
+                            whileHover={{ y: -4, scale: 1.05 }}
+                          >
+                            <img
                               src={img}
-                              alt={`${project.title} screenshot ${
-                                imgIndex + 1
-                              }`}
-                              className="w-48 md:w-56 lg:w-64 h-auto rounded-lg shadow-2xl"
-                              style={{
-                                filter:
-                                  "drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))",
-                              }}
+                              alt={`${project.title} ${imgIndex + 1}`}
+                              className="w-32 h-auto"
                             />
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
 
-                            {/* Decorative corner accent */}
-                            <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#64ffda] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-[#64ffda] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-
-                  <h3 className="text-xl font-semibold text-[#ccd6f6] mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-[#8892b0] mb-4">{project.description}</p>
-                  <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="flex flex-wrap gap-2 mb-4"
-                  >
-                    {project.tech.map((tech) => (
-                      <motion.span
-                        key={tech}
-                        variants={itemVariants}
-                        whileHover={{ scale: 1.1 }}
-                        className="text-xs text-[#8892b0] font-mono"
+                    {/* Project Content */}
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-[#ccd6f6] mb-3 group-hover:text-[#64ffda] transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-[#8892b0] mb-4 leading-relaxed">
+                        {project.description}
+                      </p>
+                      <motion.ul
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="flex flex-wrap gap-2 mb-4 list-none"
                       >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </motion.div>
-                  <div className="flex gap-4">
-                    <motion.a
-                      href={project.externalLink || "#"}
-                      whileHover={{ x: 5, color: "#ccd6f6" }}
-                      className="text-[#64ffda] hover:text-[#ccd6f6] text-sm"
-                    >
-                      ↗ External Link
-                    </motion.a>
-                    <motion.a
-                      href={project.githubLink || "#"}
-                      whileHover={{ x: 5, color: "#ccd6f6" }}
-                      className="text-[#64ffda] hover:text-[#ccd6f6] text-sm"
-                    >
-                      <span className="font-mono">→</span> GitHub
-                    </motion.a>
+                        {project.tech.map((tech) => (
+                          <motion.li
+                            key={tech}
+                            variants={itemVariants}
+                            className="text-xs text-[#8892b0] font-mono"
+                          >
+                            {tech}
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                      <div className="flex gap-4">
+                        <a
+                          href={project.externalLink || "#"}
+                          className="text-sm text-[#64ffda] hover:text-[#ccd6f6] transition-colors"
+                        >
+                          ↗ External Link
+                        </a>
+                        <a
+                          href={project.githubLink || "#"}
+                          className="text-sm text-[#64ffda] hover:text-[#ccd6f6] transition-colors"
+                        >
+                          <span className="font-mono">→</span> GitHub
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}
